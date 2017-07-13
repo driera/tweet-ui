@@ -23,6 +23,14 @@ new Vue({
 
         charactersRemaining() {
             return MAX_TWEET_LENGTH - this.tweet.length;
+        },
+
+        underTwentyMark() {
+            return this.charactersRemaining <= 20 && this.charactersRemaining > 10;
+        },
+
+        underTenMark() {
+            return this.charactersRemaining <= 10;
         }
     }
 })

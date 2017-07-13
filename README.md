@@ -1,7 +1,5 @@
 # tweet-ui
-Made following [this great tutorial](https://medium.freecodecamp.org/vue-js-introduction-for-people-who-know-just-enough-jquery-to-get-by-eab5aa193d77) by [Matt Rothenberg](http://mattrothenberg.com)
-
-> A Vue.js project
+> Made following [this great tutorial](https://medium.freecodecamp.org/vue-js-introduction-for-people-who-know-just-enough-jquery-to-get-by-eab5aa193d77) by [Matt Rothenberg](http://mattrothenberg.com)
 
 ## Build Setup
 

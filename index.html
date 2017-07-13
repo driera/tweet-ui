@@ -14,7 +14,7 @@
         <div class="bg-near-white pa3">
             <textarea name="tweet" v-model="tweet" rows="3" class="w-100 br2 ba b--black-10 pa2"></textarea>
             <div class="mt3 tr">
-                <span class="mr3 black-70">{{ charactersRemaining }}</span>
+                <span class="mr3 black-70" :class="{ 'dark-red': underTwentyMark, 'light-red': underTenMark }">{{ charactersRemaining }}</span>
                 <button :disabled="tweetIsOutOfRange" class="button-reset bg-blue bn white f6 fw5 pv2 ph3 br2 pointer dim">Tweet</button>
             </div>
         </div>
