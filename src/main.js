@@ -69,6 +69,7 @@ new Vue({
         },
         hideModal() {
             this.modalShowing = false
+            this.tweet = ''
         }
     }
 })
