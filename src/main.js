@@ -1,10 +1,5 @@
+import Velocity from 'velocity-animate'
 import Vue from 'vue'
-// import App from './App.vue'
-//
-// new Vue({
-//   el: '#app',
-//   render: h => h(App)
-// })
 
 const MAX_TWEET_LENGTH = 140;
 
@@ -15,7 +10,8 @@ new Vue({
     data: {
         tweet: '',
         message: message,
-        photo: null
+        photos: [],
+        modalShowing: false
     },
     computed: {
         tweetIsOutOfRange() {
@@ -31,7 +27,7 @@ new Vue({
             return this.charactersRemaining <= 10;
         },
         photoHasBeenUploaded() {
-            return this.photo !== null;
+            return this.photos.length > 0;
         }
     },
     methods: {
@@ -40,16 +36,39 @@ new Vue({
         },
         handlePhotoUpload(e) {
             let self = this;
-            let reader = new FileReader();
+            let files = e.target.files;
 
-            reader.onload = function(e) {
-                self.photo = e.target.result;
+            for (var i = 0; i < files.length; i++) {
+                let reader = new FileReader();
+
+                reader.onloadend = function(evt) {
+                    self.photos.push(evt.target.result)
+                }
+
+                reader.readAsDataURL(files[i]);
             }
-
-            reader.readAsDataURL(e.target.files[0]);
         },
-        removePhoto() {
-            this.photo = null;
+        removePhoto(index) {
+            this.photos.splice(index, 1);
+        },
+        modalEnter(el, done) {
+            Velocity(el, 'fadeIn', {
+                duration: 300,
+                complete: done,
+                display: 'flex'
+            })
+        },
+        modalLeave(el, done) {
+            Velocity(el, 'fadeOut', {
+                duration: 300,
+                complete: done
+            })
+        },
+        showModal() {
+            this.modalShowing = true
+        },
+        hideModal() {
+            this.modalShowing = false
         }
     }
 })
