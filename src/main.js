@@ -6,14 +6,23 @@ import Vue from 'vue'
 //   render: h => h(App)
 // })
 
+const MAX_TWEET_LENGTH = 140;
+
+let message = 'Compose New Tweet'
+
 new Vue({
     el: '#twitterVue',
     data: {
-        tweet: ''
+        tweet: '',
+        message: message
     },
     computed: {
-        tweetIsEmpty: function() {
-            return this.tweet.length === 0;
+        tweetIsOutOfRange() {
+            return this.charactersRemaining == MAX_TWEET_LENGTH || this.charactersRemaining < 0;
+        },
+
+        charactersRemaining() {
+            return MAX_TWEET_LENGTH - this.tweet.length;
         }
     }
 })
